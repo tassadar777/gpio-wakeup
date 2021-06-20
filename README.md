@@ -8,7 +8,7 @@ To build the kernel module:
  $ make
 
 To test the wakeup button:
- $ sudo insmod gpio-wakeup
+ $ sudo insmod gpio-wakeup.ko
  $ poweroff
 
 and after the computer shutdown long press the power button.
