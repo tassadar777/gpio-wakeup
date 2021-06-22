@@ -1,0 +1,23 @@
+	/* Not required by gpio-wakeup driver, but gives a
+	   gpio polled power button on pin 11 (export #479) 
+	   if the kernel is compiled with CONFIG_KEYBOARD_GPIO_POLLED=y: */
+
+	gpio-keys-polled {
+                compatible = "gpio-keys-polled";
+                #address-cells = <1>;
+                #size-cells = <0>;
+                poll-interval = <100>;
+
+                power-button {
+                        label = "power";
+                        linux,code = <KEY_POWER>;
+                        gpios = <&gpio GPIOX_3 GPIO_ACTIVE_LOW>;
+                };
+        };
+
+	/* This allocates resources for gpio-wakeup driver: */
+
+        gpio-wakeup {
+                compatible = "amlogic,gpio-wakeup";
+                reg = <0x0 0xFF800000 0x0 0x400>;
+        };
